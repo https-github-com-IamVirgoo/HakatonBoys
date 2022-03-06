@@ -42,7 +42,13 @@ class Price(Resource):
         return {'content': Price_Calculation(price)}
 
 
+class Prices(Resource):
+    def get(self, key):
+        print(f"Getting {key}")
+        return {'content': get_by_key(key)}
+
 api.add_resource(Price, '/api/v1/<string:price>')
+api.add_resource(Prices, '/api/v2/<string:key>')
 
 #--------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -53,8 +59,18 @@ def DollarParse():
     usd = soup.find('span', class_='text-2xl').text
     return usd
 
-with open('db.json', 'r') as databasefile:
-    data = json.load(databasefile)
+with open('app/message.json', 'r') as databasefile:
+    data = json.load(databasefile)['cont']
 
 def get_by_key(key: str):
-    return data[key]
+    for i in data:
+        print(i['Наименование'])
+        k = i['Наименование'].split(' ')[2]
+        print(k)
+        if k == key:
+            return {
+                'Name': i['Наименование'],
+                'DelivDate': i['ДатаПоставки'],
+                'Price': i['Цена'],
+                'Amount': i['ОбъемЗаказа']
+            }
