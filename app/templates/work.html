@@ -14,7 +14,8 @@
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
     crossorigin="anonymous"></script>
     <script
-    src="{{ url_for('static', filename="js/selectable.js") }}"></script>
+    src="{{ url_for('static', filename="js/selectable.js") }}">
+    </script>
     <header>
         <h1 class="header-title">CPP Segmentation error</h1>
     </header>
@@ -41,39 +42,38 @@
                 <!--<button class="left-content-box-btn-2">Название товара</button>-->
                 <select  name="Название товара" required id="select-val">
                     <option value="1">Выберите товар</option>
-                    <option value="2">Зуб 1085.52.05-1</option>
-                    <option value="3">Колесо 3519.05.02.006</option>
-                    <option value="4">Вал 3536.11.01.002</option>
-                    <option value="5">Вал 3519.05.02.083</option>
-                    <option value="6">Ось 3519.21.00.025</option>
-                    <option value="7">Коромысло 3519.21.00.023</option>
-                    <option value="8">Вал 3572.05.10.200</option>
-                    <option value="9">Вант стрелы 00.1606.49.1 </option>
-                    <option value="10">Засов 3532.01.02.007</option>
-                    <option value="11">Вал 3572.05.10.150</option>
-                    <option value="12">Сателлит 3536.11.01.028</option>
-                    <option value="13">ВАЛ-ШЕСТЕРНЯ 3536.11.01.002 </option>
-                    <option value="14">Вал 3532.10.01.011</option>
-                    <option value="15">Зуб  1085.52.05-1</option>
-                    <option value="16">Колесо 3519.05.02.003</option>
-                    <option value="17">Ось 3519.05.02.082</option>
-                    <option value="18">Ось 3519.05.02.081</option>
-                    <option value="19">Колесо 3519.05.02.061</option>
-                    <option value="20">Вал 3519.05.02.007</option>
-                    <option value="21">Ось 3536.03.00.001</option>
-                    <option value="22">Коромысло 3537.25.00.500 </option>
+                    <option value="Зуб 1085.52.05-1">Зуб 1085.52.05-1</option>
+                    <option value="Колесо 3519.05.02.006">Колесо 3519.05.02.006</option>
+                    <option value="Вал 3536.11.01.002">Вал 3536.11.01.002</option>
+                    <option value="Вал 3519.05.02.083">Вал 3519.05.02.083</option>
+                    <option value="Ось 3519.21.00.025">Ось 3519.21.00.025</option>
+                    <option value="Коромысло 3519.21.00.023">Коромысло 3519.21.00.023</option>
+                    <option value="Вал 3572.05.10.200">Вал 3572.05.10.200</option>
+                    <option value="Вант стрелы 00.1606.49.1">Вант стрелы 00.1606.49.1 </option>
+                    <option value="Засов 3532.01.02.007">Засов 3532.01.02.007</option>
+                    <option value="Вал 3572.05.10.150">Вал 3572.05.10.150</option>
+                    <option value="Сателлит 3536.11.01.028">Сателлит 3536.11.01.028</option>
+                    <option value="ВАЛ-ШЕСТЕРНЯ 3536.11.01.002">ВАЛ-ШЕСТЕРНЯ 3536.11.01.002 </option>
+                    <option value="Вал 3532.10.01.011">Вал 3532.10.01.011</option>
+                    <option value="Зуб  1085.52.05-1">Зуб  1085.52.05-1</option>
+                    <option value="Колесо 3519.05.02.003">Колесо 3519.05.02.003</option>
+                    <option value="Ось 3519.05.02.082">Ось 3519.05.02.082</option>
+                    <option value="Ось 3519.05.02.081">Ось 3519.05.02.081</option>
+                    <option value="Колесо 3519.05.02.061">Колесо 3519.05.02.061</option>
+                    <option value="Вал 3519.05.02.007">Вал 3519.05.02.007</option>
+                    <option value="Ось 3536.03.00.001">Ось 3536.03.00.001</option>
+                    <option value="Коромысло 3537.25.00.500">Коромысло 3537.25.00.500 </option>
                 </select>
             </div>
             <div class="right-info">
                 <h1 class="right-content-box-title">Результат</h1>
                 <p class="right-content-box-result" >Выбранный товар в<br>ближайшее время будет<br>стоить 
-                    <strong id="exchange_price">{price}</strong> 
-                    с<br>погрещностью в <strong>{rate}%</strong></p>
+                    <strong id="exchange_price"></strong> 
             </div>
         </div>
     </section>
     <footer>
-        <h1 class="footer-title"><a href="">About Programm</a></h1>
+        <h1 class="footer-title"><a href="/doc">About Programm</a></h1>
     </footer>
 </body>
 </html>
