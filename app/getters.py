@@ -1,6 +1,7 @@
 import json
 import codecs
 
+from bs4 import BeautifulSoup
 import requests as re
 
 # Data base 
@@ -8,21 +9,20 @@ with codecs.open('app/message.json', 'r', 'utf-8') as databasefile:
     data = json.load(databasefile)['cont']
 
 
-def price_getter(tag: str) -> dict:
+def price_getter(tag: str) -> float:
     'Returns dict with data'
-    ...
+    return priceCalc(tag)
 
 
 def DollarParse() -> str:
     url = "https://ru.investing.com/currencies/usd-rub"
-    r = requests.get(url, headers=headers)
+    r = re.get(url)
     soup = BeautifulSoup(r.content, 'html.parser')
     usd = soup.find('span', class_='text-2xl').text
     return usd
 
 
 def priceCalc(key):
-
     # Declaration of variables
     averagePrice = 0
     counter = 0
@@ -34,6 +34,7 @@ def priceCalc(key):
     for i in data:
         k = i['Наименование']
         if k == key:
+            print(f'Finded key is {key}')
             counter += 1
             if i['ДатаПоставки'][:4] == "2015" or i['ДатаПоставки'][6:10] == "2015":
                 averagePrice += float(i['Цена'].replace(',', '.')) / dollarStat[0]
