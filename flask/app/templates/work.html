@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link ref="stylesheet" href="{{ url_for('static', filename='style_work.css') }}" />
+    <title>Work Page</title>
+</head>
+<body>
+    <style>
+        body {
+    background-color: #fff;
+    margin: 0;
+    /*font-family: 'Manrope', sans-serif;
+    font-family: 'Montserrat', sans-serif;*/
+}
+
+header {
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+}
+
+.header-title {
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    font-size: 40px;
+    margin-top: 0px;
+    margin-bottom: 2.5vw;
+    padding-top: 1.8vw;
+    padding-bottom: 2.5vw;
+}
+
+.hight-content {
+    margin-left: 8vw;
+    margin-right: 8vw;
+    margin-bottom: 5vw;
+}
+
+.hight-content-title {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    list-style-type: none;
+    margin-left: -36px;
+}
+
+.hight-content-title > li > .content-title, a {
+    text-decoration: none;
+    color: #000;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    font-size: 40px;
+}
+
+a {
+    cursor: pointer;
+}
+
+.main-content-info {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    margin-left: -36px;
+}
+
+.main-content-info > li {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    font-size: 25px;
+}
+
+.main-content {
+    margin-left: 8vw;
+    margin-right: 8vw;
+    margin-bottom: 8vw;
+}
+
+.content-box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: #000;
+    border-radius: 10px;
+    color: #fff;
+    margin-left: 8vw;
+    margin-right: 8vw;
+    margin-bottom: 6vw;
+}
+
+.left-info {
+    margin-left: 3.8vw;
+}
+
+.left-content-box-btn {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    cursor: pointer;
+    font-size: 25px;
+    width: 300px;
+    height: 80px;
+    margin-top: 4vw;
+    border-radius: 15px;
+}
+
+select {
+    color: #000;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    cursor: pointer;
+    font-size: 25px;
+    width: 300px;
+    height: 80px;
+    margin-bottom: 4vw;
+    border-radius: 15px;
+}
+
+.content-box-description {
+    line-height: 25px;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+    margin-top: 2vw;
+    margin-bottom: 2vw;
+}
+
+.right-info {
+    margin-right: 3.8vw;
+}
+
+.right-content-box-title {
+    margin-top: 4.5vw;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 50px;
+    font-weight: 300;
+}
+
+.right-content-box-result {
+    line-height: 25px;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+    margin-top: 2vw;
+    margin-bottom: 2vw;
+}
+
+footer {
+    background-color: #000;
+}
+
+.footer-title {
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    font-size: 40px;
+    margin-bottom: 2.5vw;
+    padding-top: 1.8vw;
+    padding-bottom: 2.5vw;
+    margin-bottom: 0;
+}
+
+.footer-title > a {
+    text-decoration: none;
+    color: #fff;
+}
+
+    </style>
+    <header>
+        <h1 class="header-title">CPP Segmentation error</h1>
+    </header>
+    <section>
+        <div class="hight-content">
+            <ul class="hight-content-title">
+                <li><h1 class="content-title">Инструкция</h1></li>
+                <li><a href="">Главная страница</a></li>
+            </ul>
+        </div>
+        <div class="main-content">
+            <ul class="main-content-info">
+                <li>Загрузите файл</li>
+                <li><img src=".\Work Page\icons\icon-1.svg" alt=""></li>
+                <li>Выберите товар</li>
+                <li><img src=".\Work Page\icons\icon-1.svg" alt=""></li>
+                <li>Получите результат :)</li>
+            </ul>
+        </div>
+        <div class="content-box">
+            <div class="left-info">
+                <button class="left-content-box-btn">Выберите файл</button>
+                <p class="content-box-description">Файл должен представлять собой<br>именнованную базу данных с<br>расширением .svc</p>
+                <!--<button class="left-content-box-btn-2">Название товара</button>-->
+                <select  name="Название товара" required>
+                    <option value="1">Выберите товар</option>
+                    <option value="2">Зуб 1085.52.05-1</option>
+                    <option value="3">Колесо 3519.05.02.006</option>
+                    <option value="4">Вал 3536.11.01.002</option>
+                    <option value="5">Вал 3519.05.02.083</option>
+                    <option value="6">Ось 3519.21.00.025</option>
+                    <option value="7">Коромысло 3519.21.00.023</option>
+                    <option value="8">Вал 3572.05.10.200</option>
+                    <option value="9">Вант стрелы 00.1606.49.1 </option>
+                    <option value="10">Засов 3532.01.02.007</option>
+                    <option value="11">Вал 3572.05.10.150</option>
+                    <option value="12">Сателлит 3536.11.01.028</option>
+                    <option value="13">ВАЛ-ШЕСТЕРНЯ 3536.11.01.002 </option>
+                    <option value="14">Вал 3532.10.01.011</option>
+                    <option value="15">Зуб  1085.52.05-1</option>
+                    <option value="16">Колесо 3519.05.02.003</option>
+                    <option value="17">Ось 3519.05.02.082</option>
+                    <option value="18">Ось 3519.05.02.081</option>
+                    <option value="19">Колесо 3519.05.02.061</option>
+                    <option value="20">Вал 3519.05.02.007</option>
+                    <option value="21">Ось 3536.03.00.001</option>
+                    <option value="22">Коромысло 3537.25.00.500 </option>
+                </select>
+            </div>
+            <div class="right-info">
+                <h1 class="right-content-box-title">Результат</h1>
+                <p class="right-content-box-result">Выбранный товар в<br>ближайшее время будет<br>стоить <strong>{price}</strong> с<br>погрещностью в <strong>{rate}%</strong></p>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <h1 class="footer-title"><a href="">About Programm</a></h1>
+    </footer>
+</body>
+</html>
