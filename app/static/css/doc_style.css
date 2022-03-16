@@ -59,7 +59,7 @@ header {
 
 .main-content-btn {
     text-decoration: none;  
-    background-color: #000;
+    background-color: #00B2FC;
     color: #fff;
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
@@ -78,7 +78,7 @@ header {
 
 footer {
     margin-top: 7vw;    
-    background-color: #000;
+    background-color: #008CFC;
 }
 
 .footer-title {

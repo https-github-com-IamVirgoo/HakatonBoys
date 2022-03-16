@@ -22,7 +22,7 @@ header {
 
 .content-box {
     text-align: center;
-    background-color: #000;
+    background-color: #00B2FC;
     border-radius: 10px;
     color: #fff;
     margin-left: 8vw;
@@ -103,7 +103,7 @@ header {
 }
 
 footer {
-    background-color: #000;
+    background-color: #008CFC;
 }
 
 .footer-title {
