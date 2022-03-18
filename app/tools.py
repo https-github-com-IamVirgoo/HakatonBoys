@@ -6,28 +6,36 @@ import pandas as pd
 from bs4 import BeautifulSoup
 
 
-url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vR5TcnFfw2KNSB0QXgVBmuIpZRad_mcD7XRtVH0zITO1Etzvjfs4Tf2L5aArkOovQ/pub?output=csv"
-
-
-df = pd.read_csv(io.StringIO(requests.get(url).content.decode('utf-8')), parse_dates=['Наименование'], index_col=False)
-data = json.loads(json.dumps(list(df.loc[:, ['Наименование', 'Дата поставки', 'Объем заказа', 'Цена, руб']].T.to_dict().values())))
+def get_data(url: str) -> dict:
+    if "?output=" in url and "?output=csv" not in url:
+        url = url.split('?output=csv')
+        url = f'{url[0]}?output=csv'
+    elif '?output=' not in url:
+        url = f'{url}?output=csv'
+    
+    df = pd.read_csv(io.StringIO(requests.get(url).content.decode('utf-8')), parse_dates=['Наименование'], index_col=False)
+    data = list(df.loc[:, ['Наименование', 'Дата поставки', 'Объем заказа', 'Цена, руб']].T.to_dict().values())
+    
+    return data
 
 
 # TODO: override this function
-def DollarParse() -> str:
+def price_dollar() -> str:
     url = "https://ru.investing.com/currencies/usd-rub"
     r = re.get(url)
     soup = BeautifulSoup(r.content, 'html.parser')
     usd = soup.find('span', class_='text-2xl').text
     return usd
 
+
 # TODO: override this function
-def EuroParse() -> str:
+def price_euro() -> str:
     url = "https://ru.investing.com/currencies/eur-rub"
     r = re.get(url)
     soup = BeautifulSoup(r.content, 'html.parser')
     eur = soup.find('span', class_='text-2xl').text
     return eur    
+
 
 # TODO: override this function
 def priceCalc(key):
@@ -39,11 +47,10 @@ def priceCalc(key):
     dollarStat = [60.9579, 67.0349, 58.3529, 62.7091, 64.7362, 72.1464, 73.6541]
     euroStat = [87.1877, 82.4488, 72.5021, 73.9511, 65.9014, 74.231, 67.7767]
 
-    dollarActual = float(DollarParse().replace(',', '.'))
-    euroActual = float(EuroParse().replace(',', '.'))
-
+    dollarActual = float(price_dollar().replace(',', '.'))
+    euroActual = float(price_euro().replace(',', '.'))
+    
     # Running through the database
-
     for i in data:
         k = i['Наименование']
         if k == key:
@@ -98,3 +105,8 @@ def priceCalc(key):
     quintity /= counter
     averagePrice = (averageDollarPrice*dollarActual + averageEuroPrise*euroActual)/2
     return averagePrice, quintity
+
+
+if __name__ == "__main__":
+    res = get_data(url="https://docs.google.com/spreadsheets/d/e/2PACX-1vR5TcnFfw2KNSB0QXgVBmuIpZRad_mcD7XRtVH0zITO1Etzvjfs4Tf2L5aArkOovQ/pub?output=csv")
+    print(res)
