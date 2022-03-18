@@ -1,25 +1,19 @@
+import io
 import json
 import codecs
 import requests
-import pandas
+import pandas as pd
 from bs4 import BeautifulSoup
 
-# Data base 
-""" with codecs.open('app/message.json', 'r', 'utf-8') as databasefile:
-    data = json.load(databasefile)['cont']
- """
- url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vR5TcnFfw2KNSB0QXgVBmuIpZRad_mcD7XRtVH0zITO1Etzvjfs4Tf2L5aArkOovQ/pub?output=csv"
+
+url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vR5TcnFfw2KNSB0QXgVBmuIpZRad_mcD7XRtVH0zITO1Etzvjfs4Tf2L5aArkOovQ/pub?output=csv"
+
 
 df = pd.read_csv(io.StringIO(requests.get(url).content.decode('utf-8')), parse_dates=['Наименование'], index_col=False)
 data = json.loads(json.dumps(list(df.loc[:, ['Наименование', 'Дата поставки', 'Объем заказа', 'Цена, руб']].T.to_dict().values())))
 
 
-
-def price_getter(tag: str) -> float:
-    'Returns dict with data'
-    return priceCalc(tag)
-
-
+# TODO: override this function
 def DollarParse() -> str:
     url = "https://ru.investing.com/currencies/usd-rub"
     r = re.get(url)
@@ -27,6 +21,7 @@ def DollarParse() -> str:
     usd = soup.find('span', class_='text-2xl').text
     return usd
 
+# TODO: override this function
 def EuroParse() -> str:
     url = "https://ru.investing.com/currencies/eur-rub"
     r = re.get(url)
@@ -34,7 +29,7 @@ def EuroParse() -> str:
     eur = soup.find('span', class_='text-2xl').text
     return eur    
 
-
+# TODO: override this function
 def priceCalc(key):
     # Declaration of variables
     averageDollarPrice = 0
