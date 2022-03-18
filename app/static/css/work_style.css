@@ -71,7 +71,7 @@ a {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    background-color: #000;
+    background-color: #00B2FC;
     border-radius: 10px;
     color: #fff;
     margin-left: 8vw;
@@ -139,7 +139,7 @@ select {
 }
 
 footer {
-    background-color: #000;
+    background-color: #008CFC;
 }
 
 .footer-title {
