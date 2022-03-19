@@ -22,10 +22,10 @@ def get_data(url: str) -> dict:
 # TODO: override this function
 urleur = "https://ru.investing.com/currencies/eur-rub"
 url_dollar = "https://ru.investing.com/currencies/usd-rub"
-r = re.get(url_dollar)
-r = re.get(urleur)
-usd = BeautifulSoup(r.content, 'html.parser').find('span', class_='text-2xl').text
-eur = BeautifulSoup(r.content, 'html.parser').find('span', class_='text-2xl').text 
+r_usd = re.get(url_dollar)
+r_eur = re.get(urleur)
+usd = BeautifulSoup(r_usd.content, 'html.parser').find('span', class_='text-2xl').text
+eur = BeautifulSoup(r_eur.content, 'html.parser').find('span', class_='text-2xl').text 
 
 dollarActual = float(usd.replace(',', '.'))
 euroActual = float(eur.replace(',', '.'))
@@ -49,10 +49,12 @@ def priceCalc(key):
     # Running through the database
     for i in data:
         k = i['Наименование']
-        """ if k!=lastname:
-            continue """
+
+        if k!=lastname and lastname == key:
+            continue
+
         if k == key:
-           # lastname=k
+            lastname=k
            # print(f'Finded key is {key}')
             counter += 1
             if i['Дата поставки'][:4] == "2015" or i['Дата поставки'][6:10] == "2015":
@@ -112,13 +114,11 @@ def priceCalc(key):
     averagePriceRUB = (averageDollarPrice*dollarActual + averageEuroPrise*euroActual)/2
     return averagePriceRUB, quintity
 
-def Array_Init():
-    top_list = ['Вал 3519.05.02.007','Вал 3519.05.02.083','Вал 3532.10.01.011','Вал 3536.11.01.002','Вал 3572.05.10.150','Вал 3572.05.10.200','ВАЛ-ШЕСТЕРНЯ 3536.11.01.002' ,'Вант стрелы 00.1606.49.1 ','Засов 3532.01.02.007','Зуб  1085.52.05-1','Зуб 1085.52.05-1','Колесо 3519.05.02.003','Колесо 3519.05.02.006','Колесо 3519.05.02.061','Коромысло 3519.21.00.023','Коромысло 3537.25.00.500','Ось 3519.05.02.081','Ось 3519.05.02.082','Ось 3519.21.00.025','Ось 3536.03.00.001','Сателлит 3536.11.01.028']
-    a=[usd,eur]
-    for i in top_list:
-        a.append(i)
-        a.append(priceCalc(i))
-    return a
+top_list = ['Вал 3519.05.02.007','Вал 3519.05.02.083','Вал 3532.10.01.011','Вал 3536.11.01.002','Вал 3572.05.10.150','Вал 3572.05.10.200','ВАЛ-ШЕСТЕРНЯ 3536.11.01.002' ,'Вант стрелы 00.1606.49.1 ','Засов 3532.01.02.007','Зуб  1085.52.05-1','Зуб 1085.52.05-1','Колесо 3519.05.02.003','Колесо 3519.05.02.006','Колесо 3519.05.02.061','Коромысло 3519.21.00.023','Коромысло 3537.25.00.500','Ось 3519.05.02.081','Ось 3519.05.02.082','Ось 3519.21.00.025','Ось 3536.03.00.001','Сателлит 3536.11.01.028']
+a=[]
+for i in top_list:
+    a.append(i)
+    a.append(priceCalc(i))
 
 if __name__ == "__main__":
     res = get_data(url="https://docs.google.com/spreadsheets/d/e/2PACX-1vR5TcnFfw2KNSB0QXgVBmuIpZRad_mcD7XRtVH0zITO1Etzvjfs4Tf2L5aArkOovQ/pub?output=csv")

@@ -19,4 +19,9 @@ class FilePoint(Resource):
     # TODO: implement inteface which can understand what typeof file is 
     # provided
     def get(self, file: str):
-        return {}
+        return {
+            'eur':eur,
+            'usd':usd,
+            'content':a
+
+        }
