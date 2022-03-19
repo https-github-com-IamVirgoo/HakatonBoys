@@ -68,5 +68,5 @@
     </div>
 </section>
 <script>
-    let prices = fetch('https://dolar-api.heroku.com/api/v1/testify').then((d) => d.json()).then((d) => {prices = d})
+    let prices = fetch('https://dolar-api.heroku.com/api/v1/').then((d) => d.json()).then((d) => {prices = d})
 </script>
