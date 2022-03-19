@@ -24,7 +24,6 @@ class FilePoint(Resource):
     # provided
     def get(self, file: str):
         data = get_data(file)
-        print(data[0])
         output = []
         for elm in data:
             output.append(
@@ -34,14 +33,6 @@ class FilePoint(Resource):
                     "pr": elm['Цена, руб']
                 }
             )
-        
-        with open(f'file-{file}.json', 'x') as f:
-            json.dump(elm, f)
-
-        with codecs.open(f'file-{file}.json', 'r', 'utf-8') as f:
-            output = json.load(f)
-        
-        os.remove(f'file-{file}.json')
         
         return {
             'eur':euroActual,
