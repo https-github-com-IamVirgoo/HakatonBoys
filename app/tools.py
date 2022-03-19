@@ -19,18 +19,20 @@ def get_data(url: str) -> dict:
     return data
 
 
-# TODO: override this function
+ # TODO: override this function
 urleur = "https://ru.investing.com/currencies/eur-rub"
 url_dollar = "https://ru.investing.com/currencies/usd-rub"
-r_usd = requests.get(url_dollar)
-r_eur = requests.get(urleur)
-usd = BeautifulSoup(r_usd.content, 'html.parser').find('span', class_='text-2xl').text
-eur = BeautifulSoup(r_eur.content, 'html.parser').find('span', class_='text-2xl').text 
-
+r_usd = requests.get(url_dollar, headers={'User-Agent': 'Mozilla/5.0'})
+r_eur = requests.get(urleur, headers={'User-Agent': 'Mozilla/5.0'})
+usd_h = BeautifulSoup(r_usd.content, "html.parser")
+eur_h = BeautifulSoup(r_eur.content, "html.parser")
+usd = usd_h.find('span', class_='text-2xl').text
+eur = eur_h.find('span', class_='text-2xl').text
+print(usd)
 dollarActual = float(usd.replace(',', '.'))
 euroActual = float(eur.replace(',', '.'))
 # TODO: override this function
-
+ 
 
 
 

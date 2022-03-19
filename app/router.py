@@ -28,7 +28,7 @@ class FilePoint(Resource):
 
         
         return {
-            'eur':eur,
-            'usd':usd,
+            'eur':euroActual,
+            'usd':dollarActual,
             'ctn':ctn
         }
