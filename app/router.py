@@ -22,7 +22,7 @@ class FilePoint(Resource):
         data = get_data(file)
         
         ctn = []
-        for i in top_list:
+        for i in data.keys():
             ctn.append(i)
             ctn.append(priceCalc(i))
 
