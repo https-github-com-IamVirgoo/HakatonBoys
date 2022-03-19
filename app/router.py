@@ -30,7 +30,7 @@ class FilePoint(Resource):
                 {
                     "nm": elm['Наименование'],
                     "am": elm['Объем заказа'],
-                    "pr": str(elm['Цена, руб'])[0:6]
+                    "pr": int(str(elm['Цена, руб']).split(',')[0])
                 }
             )
         
