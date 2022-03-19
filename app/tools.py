@@ -115,12 +115,6 @@ def priceCalc(key):
     return averagePriceRUB, quintity
 
 top_list = ['Вал 3519.05.02.007','Вал 3519.05.02.083','Вал 3532.10.01.011','Вал 3536.11.01.002','Вал 3572.05.10.150','Вал 3572.05.10.200','ВАЛ-ШЕСТЕРНЯ 3536.11.01.002' ,'Вант стрелы 00.1606.49.1 ','Засов 3532.01.02.007','Зуб  1085.52.05-1','Зуб 1085.52.05-1','Колесо 3519.05.02.003','Колесо 3519.05.02.006','Колесо 3519.05.02.061','Коромысло 3519.21.00.023','Коромысло 3537.25.00.500','Ось 3519.05.02.081','Ось 3519.05.02.082','Ось 3519.21.00.025','Ось 3536.03.00.001','Сателлит 3536.11.01.028']
-a=[]
-data=json.dump(get_data(url="https://docs.google.com/spreadsheets/d/e/2PACX-1vR5TcnFfw2KNSB0QXgVBmuIpZRad_mcD7XRtVH0zITO1Etzvjfs4Tf2L5aArkOovQ/pub?output=csv"))
-
-for i in top_list:
-    a.append(i)
-    a.append(priceCalc(i))
 
 if __name__ == "__main__":
     res = get_data(url="https://docs.google.com/spreadsheets/d/e/2PACX-1vR5TcnFfw2KNSB0QXgVBmuIpZRad_mcD7XRtVH0zITO1Etzvjfs4Tf2L5aArkOovQ/pub?output=csv")
