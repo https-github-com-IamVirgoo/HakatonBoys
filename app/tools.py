@@ -13,7 +13,8 @@ def get_data(url: str) -> dict:
     elif '?output=' not in url:
         url = f'{url}?output=csv'
     
-    df = pd.read_csv(io.StringIO(requests.get(url).content.decode('utf-8')), parse_dates=['Наименование'], index_col=False)
+    #df = pd.read_csv(io.StringIO(requests.get(url).content.decode('utf-8')), parse_dates=['Наименование'], index_col=False)
+    df=pd.read_csv("datamon.svg", parse_dates=['Наименование'], index_col=False)
     data = list(df.loc[:, ['Наименование', 'Дата поставки', 'Объем заказа', 'Цена, руб']].T.to_dict().values())
     
     return data
