@@ -35,7 +35,7 @@ class FilePoint(Resource):
             )
         
         return {
-            'eur':euroActual,
-            'usd':dollarActual,
+            'eur': int(str(euroActual).split('.')[0]),
+            'usd': int(str(dollarActual).split('.')[0]),
             'ctn': output
         }
