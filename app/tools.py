@@ -1,20 +1,15 @@
 import io
 import json
-import codecs
 import requests
 import pandas as pd
 from bs4 import BeautifulSoup
 
 
 def get_data(url: str) -> dict:
-    if "?output=" in url and "?output=csv" not in url:
-        url = url.split('?output=csv')
-        url = f'{url[0]}?output=csv'
-    elif '?output=' not in url:
-        url = f'{url}?output=csv'
+    url = f"https://docs.google.com/spreadsheets/d/e/{url}/pub?output=csv"
     
-    #df = pd.read_csv(io.StringIO(requests.get(url).content.decode('utf-8')), parse_dates=['Наименование'], index_col=False)
-    df=pd.read_csv("datamon.svg", parse_dates=['Наименование'], index_col=False)
+    df = pd.read_csv(io.StringIO(requests.get(url).content.decode('utf-8')), parse_dates=['Наименование'], index_col=False)
+    #df=pd.read_csv("datamon.svg", parse_dates=['Наименование'], index_col=False)
     data = list(df.loc[:, ['Наименование', 'Дата поставки', 'Объем заказа', 'Цена, руб']].T.to_dict().values())
     
     return data

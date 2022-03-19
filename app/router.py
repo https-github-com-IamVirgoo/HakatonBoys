@@ -1,3 +1,7 @@
+import os
+import json
+import codecs
+
 from flask_restful import Resource
 
 
@@ -20,15 +24,27 @@ class FilePoint(Resource):
     # provided
     def get(self, file: str):
         data = get_data(file)
+        print(data[0])
+        output = []
+        for elm in data:
+            output.append(
+                {
+                    "nm": elm['Наименование'],
+                    "am": elm['Объем заказа'],
+                    "pr": elm['Цена, руб']
+                }
+            )
         
-        ctn = []
-        for i in data.keys():
-            ctn.append(i)
-            ctn.append(priceCalc(i))
+        with open(f'file-{file}.json', 'x') as f:
+            json.dump(elm, f)
 
+        with codecs.open(f'file-{file}.json', 'r', 'utf-8') as f:
+            output = json.load(f)
+        
+        os.remove(f'file-{file}.json')
         
         return {
             'eur':euroActual,
             'usd':dollarActual,
-            'ctn':ctn
+            'ctn': output
         }
